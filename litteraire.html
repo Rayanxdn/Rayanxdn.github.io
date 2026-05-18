@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayan Touak — Écrivain & Poète</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1508;
+    --gold: #b8965a;
+    --gold-light: #d4b07a;
+    --warm: #8b6f47;
+    --muted: #7a6e5f;
+    --border: rgba(184,150,90,0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.4rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; font-style: italic; color: var(--ink); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute; font-family: 'Playfair Display', serif; font-size: 22vw;
+    font-weight: 700; font-style: italic; color: rgba(184,150,90,0.06);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none; user-select: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 1rem;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 700; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 0.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-style: italic; color: var(--muted); margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic;
+    color: var(--warm); line-height: 1.8; max-width: 550px; margin: 0 auto 3rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; }
+  .btn-gold { background: var(--gold); color: white; padding: 0.9rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.3s; }
+  .btn-gold:hover { background: var(--warm); transform: translateY(-2px); }
+  .btn-outline { border: 1px solid var(--gold); color: var(--gold); padding: 0.9rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.3s; }
+  .btn-outline:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+  .hero-stats { display: flex; justify-content: center; gap: 4rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); animation: fadeUp 0.8s 0.5s ease both; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+  .divider { border: none; height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); margin: 0 4rem; }
+
+  section { max-width: 1100px; margin: 0 auto; padding: 6rem 4rem; }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+  .section-eyebrow::before, .section-eyebrow::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ROMAN */
+  .roman-card { background: white; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr; box-shadow: 0 20px 60px rgba(0,0,0,0.06); transition: transform 0.4s, box-shadow 0.4s; }
+  .roman-card:hover { transform: translateY(-6px); box-shadow: 0 30px 80px rgba(0,0,0,0.1); }
+  .roman-img { background: var(--ink); position: relative; overflow: hidden; min-height: 400px; }
+  .roman-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: transform 0.6s; }
+  .roman-card:hover .roman-img img { transform: scale(1.03); }
+  .roman-badge { position: absolute; top: 1.5rem; left: 1.5rem; background: var(--gold); color: white; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.8rem; border-radius: 2px; }
+  .roman-content { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .roman-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .roman-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+  .roman-title em { font-style: italic; color: var(--gold); }
+  .roman-editor { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+  .roman-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.9; color: var(--warm); font-style: italic; margin-bottom: 1.5rem; }
+  .roman-press { background: var(--cream); border-left: 2px solid var(--gold); padding: 1rem 1.2rem; font-size: 0.82rem; color: var(--muted); line-height: 1.6; border-radius: 0 2px 2px 0; }
+  .roman-press strong { color: var(--ink); display: block; margin-bottom: 0.3rem; font-size: 0.75rem; letter-spacing: 0.05em; }
+
+  /* EVENTS */
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .event-card { background: white; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+  .event-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); border-color: var(--gold); }
+  .event-img { height: 220px; overflow: hidden; position: relative; }
+  .event-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .event-card:hover .event-img img { transform: scale(1.05); }
+  .event-date-badge { position: absolute; bottom: 1rem; left: 1rem; background: rgba(26,21,8,0.85); color: var(--gold-light); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 2px; backdrop-filter: blur(4px); }
+  .event-content { padding: 1.5rem; }
+  .event-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .event-loc { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+  .event-desc { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--muted); line-height: 1.7; font-style: italic; }
+
+  /* GALLERY */
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .gallery-item { overflow: hidden; border-radius: 4px; border: 1px solid var(--border); position: relative; }
+  .gallery-item.large { grid-column: span 2; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; min-height: 200px; }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,21,8,0.7) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1.2rem; }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-caption { color: white; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* PRESS */
+  .press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .press-card { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+  .press-card::before { content: '❝'; position: absolute; top: -0.5rem; left: 1.5rem; font-size: 5rem; color: var(--gold); opacity: 0.08; font-family: 'Playfair Display', serif; line-height: 1; }
+  .press-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .press-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; line-height: 1.8; color: var(--ink); margin-bottom: 1.2rem; position: relative; }
+  .press-source { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+  /* CONTACT */
+  .contact-section { background: var(--ink); color: var(--cream); text-align: center; padding: 6rem 4rem; position: relative; overflow: hidden; }
+  .contact-section::before { content: '✦'; position: absolute; font-size: 30vw; color: rgba(184,150,90,0.04); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+  .contact-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; font-style: italic; margin-bottom: 1rem; position: relative; }
+  .contact-section p { color: rgba(245,240,232,0.6); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; margin-bottom: 3rem; position: relative; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; position: relative; }
+  .contact-link { display: flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; border: 1px solid rgba(184,150,90,0.4); border-radius: 2px; text-decoration: none; color: var(--gold-light); font-size: 0.8rem; letter-spacing: 0.08em; transition: all 0.3s; }
+  .contact-link:hover { background: var(--gold); border-color: var(--gold); color: white; transform: translateY(-2px); }
+
+  footer { background: var(--ink); text-align: center; padding: 1.5rem; color: rgba(245,240,232,0.3); font-size: 0.72rem; letter-spacing: 0.08em; border-top: 1px solid rgba(184,150,90,0.1); }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .roman-card { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.large { grid-column: span 2; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-stats { gap: 2rem; }
+    .contact-section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Rayan <span>Touak</span></a>
+  <ul class="nav-links">
+    <li><a href="#romans">Romans</a></li>
+    <li><a href="#evenements">Événements</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#presse">Presse</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-text">Rayan</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Écrivain & Poète</div>
+    <h1>Rayan<br><em>Touak</em></h1>
+    <div class="hero-subtitle">Entre lignes de code et lignes de vers</div>
+    <p class="hero-quote">"Hanté par les mots, je tente de tisser la poésie<br>dans le monde réel."</p>
+    <div class="hero-ctas">
+      <a href="#romans" class="btn-gold">Découvrir mes œuvres</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">16</div>
+        <div class="stat-label">Âge au 1er roman</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Romans publiés</div>
+      </div>
+      <div>
+        <div class="stat-num">2020</div>
+        <div class="stat-label">Depuis</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ROMANS -->
+<section id="romans">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Œuvres</div>
+    <h2 class="section-title">Romans <em>publiés</em></h2>
+  </div>
+  <div class="roman-card reveal">
+    <div class="roman-img">
+      <img src="1.png" alt="Les Inséparables Tourments">
+      <div class="roman-badge">Roman · Publié à 16 ans</div>
+    </div>
+    <div class="roman-content">
+      <div class="roman-year">Premier roman · Mars 2022</div>
+      <div class="roman-title"><em>Les Inséparables</em><br>Tourments</div>
+      <div class="roman-editor">Éditions AFRAMED · Alger</div>
+      <p class="roman-desc">"Une histoire de ruptures et de retrouvailles, d'amour et d'amitié, inspirée de faits réels. Sophia, obligée de quitter son village pour Zurich, se bat pour retrouver sa joie perdue."</p>
+      <div class="roman-press">
+        <strong>La Patrie NEWS · Adila Katia</strong>
+        "Son roman est plein d'enseignements sur la vie et ceux qui subissent ses brusques changements."
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ÉVÉNEMENTS -->
+<section id="evenements">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Parcours</div>
+    <h2 class="section-title">Événements <em>littéraires</em></h2>
+  </div>
+  <div class="events-grid">
+    <div class="event-card reveal">
+      <div class="event-img">
+        <img src="2.png" alt="SILA 2022">
+        <div class="event-date-badge">Mars 2022 · Alger</div>
+      </div>
+      <div class="event-content">
+        <div class="event-loc">Salon International du Livre d'Alger</div>
+        <div class="event-title">SILA 2022</div>
+        <p class="event-desc">Signature de mon premier roman. Rencontre avec Nadia Sebkhi et la scène littéraire algérienne.</p>
+      </div>
+    </div>
+    <div class="event-card reveal">
+      <div class="event-img">
+        <img src="4.png" alt="Olympiades Poétiques">
+        <div class="event-date-badge">Juin 2024 · Paris</div>
+      </div>
+      <div class="event-content">
+        <div class="event-loc">Paris, France</div>
+        <div class="event-title">Olympiades Poétiques</div>
+        <p class="event-desc">Rencontre fondatrice avec Geneviève Guevara et Adila Katia — une rencontre décisive qui a tout changé.</p>
+      </div>
+    </div>
+    <div class="event-card reveal">
+      <div class="event-img">
+        <img src="5.png" alt="Paris Poésie">
+        <div class="event-date-badge">Sept. 2024 · Paris</div>
+      </div>
+      <div class="event-content">
+        <div class="event-loc">Café de Paris, Oberkampf</div>
+        <div class="event-title">Paris Poésie — Premier épisode</div>
+        <p class="event-desc">Premier Paris Poésie animé par Geneviève Guevara. Naissance d'une véritable famille poétique.</p>
+      </div>
+    </div>
+    <div class="event-card reveal">
+      <div class="event-img">
+        <img src="6.png" alt="Paris Poésie Oct 2024">
+        <div class="event-date-badge">Oct. 2024 · Paris</div>
+      </div>
+      <div class="event-content">
+        <div class="event-loc">Dolce Café, Paris</div>
+        <div class="event-title">Paris Poésie — Octobre 2024</div>
+        <p class="event-desc">Une soirée poétique et musicale, en compagnie de poètes et musiciens.</p>
+      </div>
+    </div>
+    <div class="event-card reveal">
+      <div class="event-img">
+        <img src="7.png" alt="Paris Poésie Mai 2025">
+        <div class="event-date-badge">Mai 2025 · Paris</div>
+      </div>
+      <div class="event-content">
+        <div class="event-loc">Jip's Café, Paris</div>
+        <div class="event-title">Paris Poésie — Mai 2025</div>
+        <p class="event-desc">Avec Leila Elmahi, Geneviève Guevara et Salah Lahsoumi au luth.</p>
+      </div>
+    </div>
+    <div class="event-card reveal">
+      <div class="event-img">
+        <img src="8.png" alt="Vers et Voix">
+        <div class="event-date-badge">Juin 2025 · Paris</div>
+      </div>
+      <div class="event-content">
+        <div class="event-loc">Paris, France</div>
+        <div class="event-title">Vers et Voix 2025</div>
+        <p class="event-desc">À côté de Claire Sarti, petite-fille du grand poète Paul Éluard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Moments</div>
+    <h2 class="section-title">Galerie <em>poétique</em></h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item large">
+      <img src="9.png" alt="Paris Poésie">
+      <div class="gallery-overlay"><div class="gallery-caption">Paris Poésie · Moments inoubliables</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="3.png" alt="Presse">
+      <div class="gallery-overlay"><div class="gallery-caption">Presse · Les Débuts</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="10.png" alt="Rencontre des auteurs francophones">
+      <div class="gallery-overlay"><div class="gallery-caption">Rencontre des Auteurs Francophones</div></div>
+    </div>
+    <div class="gallery-item large">
+      <img src="8.png" alt="Vers et Voix">
+      <div class="gallery-overlay"><div class="gallery-caption">Vers et Voix · Juin 2025</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRESSE -->
+<section id="presse">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Médias</div>
+    <h2 class="section-title">Ils en <em>parlent</em></h2>
+  </div>
+  <div class="press-grid">
+    <div class="press-card reveal">
+      <p class="press-quote">"Il n'a qu'à peine 18 ans, Rayane Touak est un jeune lycéen qui fait son entrée dans le monde littéraire avec son premier roman."</p>
+      <div class="press-source">Département Journalisme · Université Béjaïa · Massi Kettane</div>
+    </div>
+    <div class="press-card reveal">
+      <p class="press-quote">"Ils ont moins de 20 ans : Lina, Katia et Rayan publient leurs premiers romans — un texte plein d'enseignements sur la vie."</p>
+      <div class="press-source">La Patrie News · Adila Katia</div>
+    </div>
+    <div class="press-card reveal">
+      <p class="press-quote">"Rayan Touak vient de rejoindre notre réseau international — notre plus jeune poète dans notre grande famille."</p>
+      <div class="press-source">Rencontre des Auteurs Francophones · Sadia Tabti</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <h2>Entrons en <em>contact</em></h2>
+  <p>Pour collaborations, lectures publiques, interviews ou éditions</p>
+  <div class="contact-links">
+    <a href="mailto:rayantouak6@gmail.com" class="contact-link">✉ rayantouak6@gmail.com</a>
+    <a href="tel:+33754095411" class="contact-link">📞 07 54 09 54 11</a>
+    <a href="https://www.linkedin.com/in/ryan-t-" target="_blank" class="contact-link">in LinkedIn</a>
+    <a href="https://rayanxdn.github.io" target="_blank" class="contact-link">⌥ Portfolio Dev</a>
+  </div>
+</div>
+
+<footer>© 2026 Rayan Touak — Écrivain & Poète · Paris, France</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
